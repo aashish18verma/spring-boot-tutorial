@@ -1,0 +1,74 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: dev
+#spring.h2.console.enabled= true
+#spring.datasource.url= jdbc:h2:mem:dcbapp
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=password
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/dcbapp
+    username: root
+    password: root
+    driverClassname: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    open-in-view: false
+
+some:
+  config: welcome to daily codeBuffer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exculde: "env,beans"
+
+
+
+---
+spring:
+  profiles: qa
+  datasource:
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    username: root
+    password: root
+    driverClassname: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    open-in-view: false
+
+some:
+  config: welcome to daily codeBuffer
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+    username: root
+    password: root
+    driverClassname: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    open-in-view: false
+
+some:
+  config: welcome to daily codeBuffer
